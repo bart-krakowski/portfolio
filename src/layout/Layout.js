@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { theme } from '../utils/theme'
 
 const GlobalStyle = createGlobalStyle`
@@ -11,12 +11,6 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
-`
-
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: ${({theme}) => theme.colors.dark};
 `
 
 const Layout = ({children}) => (
