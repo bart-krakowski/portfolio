@@ -1,20 +1,9 @@
 import {colors} from '../settings/colors';
+import {fonts} from '../settings/fonts';
+import {media} from '../settings/media';
 
 export const theme = {
   colors,
-  fonts: {
-    typefaces: {
-      heading: 'HiraKakuStdN-W8',
-      normal: 'HiraginoSans-W6'
-    },
-    variants: {
-      thin: 300,
-      regular: 400,
-      bold: 800
-    }
-  },
-  media: {
-    tablet: '@media (min-width: 728px)',
-    desktop: '@media (min-width: 1024px)',
-  }
+  fonts,
+  media
 }
