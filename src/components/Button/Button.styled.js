@@ -1,7 +1,6 @@
-import React from "react"
 import styled from 'styled-components'
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   padding: 30px 75px;
   background-color: transparent;
   border: 2px solid ${({theme}) => theme.colors.secondary};
@@ -12,11 +11,3 @@ const StyledButton = styled.button`
   text-align: center;
   font-family: ${({theme}) => theme.fonts.typefaces.normal};
 `
-
-const Button = ({text}) => (
-  <StyledButton>
-    {text}
-  </StyledButton>
-)
-
-export default Button
