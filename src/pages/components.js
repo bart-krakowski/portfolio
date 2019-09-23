@@ -3,6 +3,7 @@ import Layout from '../layout/Layout';
 
 import { Button } from '../components/Button/Button.styled';
 import { Headline } from '../components/Headline/Headline';
+import { Number } from '../components/Number/Number';
 
 const Components = () => (
   <Layout>
@@ -12,7 +13,8 @@ const Components = () => (
       as="h1"
     >
       About
-      </Headline>
+    </Headline>
+    <Number>1</Number>
   </Layout>
 )
 
