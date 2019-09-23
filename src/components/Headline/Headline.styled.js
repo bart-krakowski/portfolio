@@ -36,31 +36,60 @@ const variants = {
   `
 }
 
-const StrokeShadowTop = styled.span`
+const H1Strokes = {
+  Top: styled.span`
+    -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
+    color: transparent;
+    position: absolute;
+    bottom: -20px;
+    height: 32%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.5;
+  `,
+
+  Bottom: styled.span`
+    -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
+    color: transparent;
+    position: absolute;
+    bottom: -40px;
+    height: 32%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.25;
+  `
+}
+
+const H2Strokes = {
+  Top: styled.span`
+    -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
+    color: transparent;
+    position: absolute;
+    bottom: -20px;
+    height: 45%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.5;
+`,
+
+Bottom: styled.span`
   -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
-  content: "${(children) => children.children}";
   color: transparent;
   position: absolute;
-  top: 100%;
-  height: 32%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0.5;
-`
-const StrokeShadowBottom = styled.span`
-  -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
-  content: "${(children) => children.children}";
-  color: transparent;
-  position: absolute;
-  top: 130%;
-  height: 32%;
+  bottom: -40px;
+  height: 45%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   opacity: 0.25;
 `
+}
 
-export { variants, StrokeShadowTop, StrokeShadowBottom }
+export { variants, H1Strokes, H2Strokes }
