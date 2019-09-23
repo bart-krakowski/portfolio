@@ -1,11 +1,18 @@
 import React from 'react'
 import Layout from '../layout/Layout';
 
-import { StyledButton } from '../components/Button/Button.styled';
+import { Button } from '../components/Button/Button.styled';
+import { Headline } from '../components/Headline/Headline';
 
 const Components = () => (
   <Layout>
-    <StyledButton>Start a project</StyledButton>
+    <Button>Start a project</Button>
+    <Headline
+      variant={'FillH1'}
+      as="h1"
+    >
+      About
+      </Headline>
   </Layout>
 )
 
