@@ -1,18 +1,17 @@
 // @flow
 import * as React from 'react'
+import PropTypes from 'prop-types';
 import { variants, H1Strokes, H2Strokes } from './Headline.styled'
 
 export const Headline = ({
   variant,
-  as,
-  color,
   children
 }) => {
   const Tag = variants[`${variant || 'StrokeH1'}`]
 
   if (variant==='FillH1') {
     return (
-      <Tag as={as}>
+      <Tag>
         {children}
         <H1Strokes.Top aria-hidden="true">{children}</H1Strokes.Top>
         <H1Strokes.Bottom aria-hidden="true">{children}</H1Strokes.Bottom>
@@ -20,7 +19,7 @@ export const Headline = ({
     )
   } else if (variant==='FillH2') {
     return (
-      <Tag as={as}>
+      <Tag>
         {children}
         <H2Strokes.Top aria-hidden="true">{children}</H2Strokes.Top>
         <H2Strokes.Bottom aria-hidden="true">{children}</H2Strokes.Bottom>
@@ -28,9 +27,13 @@ export const Headline = ({
     )
   } else {
     return (
-      <Tag as={as}>
+      <Tag>
         {children}
       </Tag>
     )
   }
+}
+
+Headline.propTypes = {
+  variant: PropTypes.string
 }
