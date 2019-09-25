@@ -5,6 +5,7 @@ import { Button } from '../components/Button/Button.styled';
 import { Headline } from '../components/Headline/Headline';
 import { Number } from '../components/Number/Number';
 import { GridLines } from '../components/GridLines/GridLines'
+import { CircleHeadline } from '../components/CircleHeadline/CircleHeadline'
 
 const Components = () => (
   <Layout>
@@ -17,6 +18,7 @@ const Components = () => (
     </Headline>
     <Number>1</Number>
     <GridLines />
+    <CircleHeadline />
   </Layout>
 )
 
