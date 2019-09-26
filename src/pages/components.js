@@ -1,12 +1,13 @@
 import React from 'react'
 import Layout from '../layout/Layout';
 
-import { Button } from '../components/Button/Button.styled';
+import Button from '../components/Button/Button.styled';
 import { Headline } from '../components/Headline/Headline';
-import { Number } from '../components/Number/Number';
-import { GridLines } from '../components/GridLines/GridLines'
-import { CircleHeadline } from '../components/CircleHeadline/CircleHeadline'
-import { MenuButton } from '../components/MenuButton/MenuButton'
+import Number from '../components/Number/Number';
+import GridLines from '../components/GridLines/GridLines'
+import CircleHeadline from '../components/CircleHeadline/CircleHeadline'
+import MenuButton from '../components/MenuButton/MenuButton'
+import Logo from '../components/Logo/Logo'
 
 const Components = () => (
   <Layout>
@@ -21,6 +22,7 @@ const Components = () => (
     <GridLines />
     <CircleHeadline />
     <MenuButton />
+    <Logo />
   </Layout>
 )
 

@@ -34,7 +34,7 @@ const GridLine = styled.div`
   transform: translatex(-50%);
 `
 
-export const GridLines = () => (
+export default () => (
   <LinesWrapper>
     <GridLine></GridLine>
   </LinesWrapper>

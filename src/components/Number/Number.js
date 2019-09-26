@@ -24,7 +24,7 @@ const NumberBottom = styled.span`
   z-index: -1;
 `
 
-export const Number = (children) => {
+export default (children) => {
   return (
     <NumberWrapper>
       <NumberTop aria-hidden="true">{children.children}</NumberTop>
