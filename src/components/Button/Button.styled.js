@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
+export default styled.button`
   padding: 30px 75px;
   background-color: transparent;
   border: 2px solid ${({theme}) => theme.colors.secondary};

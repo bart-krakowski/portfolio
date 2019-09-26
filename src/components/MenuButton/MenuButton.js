@@ -86,7 +86,7 @@ const Button = styled.button`
   }
 `
 
-export const MenuButton = () => (
+export default () => (
   <Button>
     <InnerWrapper>
       <BarTop />
