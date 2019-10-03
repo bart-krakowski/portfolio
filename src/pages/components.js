@@ -8,6 +8,7 @@ import GridLines from '../components/GridLines/GridLines'
 import CircleHeadline from '../components/CircleHeadline/CircleHeadline'
 import MenuButton from '../components/MenuButton/MenuButton'
 import Logo from '../components/Logo/Logo'
+import ScrollIndicator from '../components/ScrollIndicator/ScrollIndicator'
 
 const Components = () => (
   <Layout>
@@ -23,6 +24,7 @@ const Components = () => (
     <CircleHeadline />
     <MenuButton />
     <Logo />
+    <ScrollIndicator />
   </Layout>
 )
 
