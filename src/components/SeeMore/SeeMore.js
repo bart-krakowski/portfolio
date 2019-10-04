@@ -24,7 +24,7 @@ const Button = styled.button`
   transition: 0.3s transform;
 
   :hover {
-    transform: rotate(360deg);
+    transform: rotate(270deg);
 
     ${Background} {
       fill: ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
