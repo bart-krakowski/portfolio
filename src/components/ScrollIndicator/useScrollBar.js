@@ -11,6 +11,10 @@ export default function useScrollBar() {
 
   useEffect(() => {
     scrollbarHeightHandler()
+
+    window.addEventListener('resize', () => {
+      scrollbarHeightHandler()
+    })
   })
 
   return scrollbarHeight

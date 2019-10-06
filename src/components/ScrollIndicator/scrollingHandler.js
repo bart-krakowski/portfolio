@@ -9,7 +9,7 @@ export default function useScrollingHandler(scrollBar, scrollBarWrapper) {
   if (scrollBarElement && scrollBarWrapperElement) {
     const tickHandler = () => {
       let progress = timeline.progress()
-      progress += (proxyTween.progress() - progress) * 0.05
+      progress += (proxyTween.progress() - progress) * 0.1
       timeline.progress(progress)
     }
 

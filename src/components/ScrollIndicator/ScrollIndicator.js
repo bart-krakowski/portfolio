@@ -9,19 +9,13 @@ export default function ScrollIndicator() {
   const scrollBarWrapper = useRef(null)
   useScrollingHandler(scrollBar, scrollBarWrapper)
 
-  const ReadyScrollBar = styled(ScrollBar)`
+  const StyledScrollBar = styled(ScrollBar)`
     height: ${useScrollBar()}
   `
-
-/* window.addEventListener('resize', ()=> {
-  ReadyScrollBar = styled(ScrollBar)`
-    height: ${useScrollBar()}
-  `
-}) */
 
   let elements = (
     <Wrapper ref={scrollBarWrapper}>
-      <ReadyScrollBar ref={scrollBar}/>
+      <StyledScrollBar ref={scrollBar}/>
     </Wrapper>
   )
 
