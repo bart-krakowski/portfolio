@@ -8,10 +8,19 @@ const base = css`
   position: absolute;
 `
 
+const SiteBg = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+`
+
 const LinesWrapper = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: -1;
 
@@ -35,7 +44,9 @@ const GridLine = styled.div`
 `
 
 export default () => (
-  <LinesWrapper>
-    <GridLine></GridLine>
-  </LinesWrapper>
+  <SiteBg>
+    <LinesWrapper>
+      <GridLine></GridLine>
+    </LinesWrapper>
+  </SiteBg>
 )
