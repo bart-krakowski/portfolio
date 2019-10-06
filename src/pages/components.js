@@ -9,6 +9,7 @@ import CircleHeadline from '../components/CircleHeadline/CircleHeadline'
 import MenuButton from '../components/MenuButton/MenuButton'
 import Logo from '../components/Logo/Logo'
 import ScrollIndicator from '../components/ScrollIndicator/ScrollIndicator'
+import SeeMore from '../components/SeeMore/SeeMore'
 
 const Components = () => (
   <Layout>
@@ -25,6 +26,7 @@ const Components = () => (
     <MenuButton />
     <Logo />
     <ScrollIndicator />
+    <SeeMore color="primary"/>
   </Layout>
 )
 
