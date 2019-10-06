@@ -8,6 +8,7 @@ import GridLines from '../components/GridLines/GridLines'
 import CircleHeadline from '../components/CircleHeadline/CircleHeadline'
 import MenuButton from '../components/MenuButton/MenuButton'
 import Logo from '../components/Logo/Logo'
+import ScrollIndicator from '../components/ScrollIndicator/ScrollIndicator'
 import SeeMore from '../components/SeeMore/SeeMore'
 
 const Components = () => (
@@ -24,6 +25,7 @@ const Components = () => (
     <CircleHeadline />
     <MenuButton />
     <Logo />
+    <ScrollIndicator />
     <SeeMore color="primary"/>
   </Layout>
 )
