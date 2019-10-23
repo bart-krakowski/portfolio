@@ -16,7 +16,7 @@ const Text = styled.text`
   transform-origin: center;
   font-size: 70px;
 	font-family: ${({theme}) => theme.fonts.typefaces.heading};
-	font-weight: 900; 
+	font-weight: 900;
 	text-transform: uppercase;
 	letter-spacing: 0;
 	fill: white;
