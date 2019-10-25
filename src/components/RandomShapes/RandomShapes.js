@@ -19,7 +19,7 @@ const createShapeWrapper = (quantity, documentHeight, windowHeight) => {
   const floorShapedPerColumn = Math.floor(shapesPerColumn)
   const ceilShapedPerColumn = Math.ceil(shapesPerColumn)
 
-  const rowHeight = (documentHeight + options.rootMargin - options.bottomMargin) / (ceilShapedPerColumn + 1)
+  const rowHeight = (documentHeight - options.rootMargin - windowHeight - options.bottomMargin) / (ceilShapedPerColumn - 1)
 
   for (let i = 1; i <= options.columns; i++) {
     if (i % 2 === 0) {
@@ -67,7 +67,7 @@ const createShapes = (quantity, color, documentHeight, windowHeight) => {
   const ShapesContainer = styled.div`
     top: calc(100vh + ${options.rootMargin}px);
     width: 100%;
-    height: calc(${documentHeight - options.rootMargin}px - 100vh);
+    height: calc(${documentHeight - options.rootMargin - windowHeight}px);
     position: absolute;
   `
 
@@ -130,7 +130,7 @@ export const RandomShapes = ({
   useEffect(() => {
     setDocumentHeight(document.documentElement.scrollHeight)
     setWindowHeight(window.innerHeight)
-  }, [])
+  })
 
   return createShapes(quantity, color, documentHeight, windowHeight)
 }
