@@ -10,7 +10,7 @@ import MenuButton from '../components/MenuButton/MenuButton'
 import Logo from '../components/Logo/Logo'
 import ScrollIndicator from '../components/ScrollIndicator/ScrollIndicator'
 import SeeMore from '../components/SeeMore/SeeMore'
-import { RandomShapes } from '../components/RandomShapes/RandomShapes'
+import RandomShapes from '../components/RandomShapes/RandomShapes'
 
 const Components = () => (
   <Layout>

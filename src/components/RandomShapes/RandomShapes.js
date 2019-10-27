@@ -1,74 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { colors as colorsPallete } from '../../settings/colors'
+import useContainerHeight from './useContainerHeight'
 import styled from 'styled-components'
 import { ShapesArray } from './Shapes'
 
 const options = {
   columns: 5,
-  rootMargin: 250,
-  bottomMargin: 50
+  rootMargin: 250
 }
 
-const createShapeWrapper = (quantity, documentHeight, windowHeight) => {
+const createShapeWrapper = () => {
   let generatedStyles = ``
-  let multiplier = 0
-  const viewPortWidth = window.innerWidth
-  const columnWidth = viewPortWidth / (options.columns + 1)
-  const shapesPerColumn = quantity / options.columns
-  const floorShapedPerColumn = Math.floor(shapesPerColumn)
-  const ceilShapedPerColumn = Math.ceil(shapesPerColumn)
 
-  const rowHeight = (documentHeight - options.rootMargin - windowHeight - options.bottomMargin) / (ceilShapedPerColumn - 1)
-
-  for (let i = 1; i <= options.columns; i++) {
+  for (let i = 1; i <= options.columns; i++ ) {
     if (i % 2 === 0) {
-
-      for(let j = 1; j <= floorShapedPerColumn; j++) {
-        generatedStyles += `
-          :nth-child(${j + multiplier}) {
-            top: ${(rowHeight / 2)  + (rowHeight * (j - 1))}px;
-            left: ${(columnWidth * i) - 22}px
-          }
-        `
+      generatedStyles += `
+      :nth-child(5n + ${i}) {
+        grid-column: ${i};
+        align-self: center;
       }
-      multiplier += floorShapedPerColumn
-
+    `
     } else {
-
-
-      for(let j = 1; j <= ceilShapedPerColumn; j++) {
-        generatedStyles += `
-          :nth-child(${j + multiplier}) {
-            top: ${rowHeight * (j - 1)}px;
-            left: ${(columnWidth * i) - 22}px
-          }
-        `
-      }
-      multiplier += ceilShapedPerColumn
+      generatedStyles += `
+        :nth-child(5n + ${i}) {
+          grid-column: ${i};
+        }
+      `
     }
   }
 
   return generatedStyles
 }
 
-const createShapes = (quantity, color, documentHeight, windowHeight) => {
+const createShapes = (quantity, color) => {
   let shapes = []
   let prevShapeIndex = getRandomNumber(0, 2)
   let prevColorIndex = getRandomNumber(0, 7)
 
-  const StyledWrapper = styled.div`
+  const Wrapper = styled.div`
     width: 30px;
-    position: absolute;
 
-    ${createShapeWrapper(quantity, documentHeight, windowHeight)}
-  `
-
-  const ShapesContainer = styled.div`
-    top: calc(100vh + ${options.rootMargin}px);
-    width: 100%;
-    height: calc(${documentHeight - options.rootMargin - windowHeight}px);
-    position: absolute;
+    ${createShapeWrapper()}
   `
 
   if ( color ) {
@@ -82,9 +55,9 @@ const createShapes = (quantity, color, documentHeight, windowHeight) => {
 
       const Shape = ShapesArray[generatedIndex]
       shapes.push(
-      <StyledWrapper key={`shape-wrapper-${i}`}>
+      <Wrapper key={`shape-wrapper-${i}`}>
         <Shape key={`shape-${i}`} color={color} />
-      </StyledWrapper>)
+      </Wrapper>)
     }
     return shapes
   } else {
@@ -107,12 +80,12 @@ const createShapes = (quantity, color, documentHeight, windowHeight) => {
       const Shape = ShapesArray[generatedShapeIndex]
 
       shapes.push(
-      <StyledWrapper key={`shape-wrapper-${i}`}>
+      <Wrapper key={`shape-wrapper-${i}`}>
         <Shape key={`shape-${i}`} color={randomColor} />
-      </StyledWrapper>)
+      </Wrapper>)
     }
 
-    return <ShapesContainer>{shapes}</ShapesContainer>
+    return shapes
   }
 }
 
@@ -120,19 +93,35 @@ const getRandomNumber = (min, max) => {
   return (Math.random() * (max - min) + min).toFixed()
 }
 
-export const RandomShapes = ({
+
+const ShapesContainer = styled.div`
+  top: calc(100vh + ${options.rootMargin}px);
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(${options.columns}, auto);
+`
+
+export default function RandomShapes({
   quantity,
   color
-}) => {
-  const [documentHeight, setDocumentHeight] = useState(0)
-  const [windowHeight, setWindowHeight] = useState(0)
+}) {
+  const shapesPerColumn = quantity / options.columns
+  const floorShapedPerColumn = Math.floor(shapesPerColumn)
 
-  useEffect(() => {
-    setDocumentHeight(document.documentElement.scrollHeight)
-    setWindowHeight(window.innerHeight)
-  })
+  const StyledShapesContainer= styled(ShapesContainer)`
+    height: ${useContainerHeight() - options.rootMargin}px;
+    grid-template-rows: repeat(${floorShapedPerColumn}, auto);
+  `
 
-  return createShapes(quantity, color, documentHeight, windowHeight)
+  let elements = (
+    <StyledShapesContainer>
+      {createShapes(quantity, color)}
+    </StyledShapesContainer>
+  )
+
+  return elements
 }
 
 RandomShapes.propTypes = {
