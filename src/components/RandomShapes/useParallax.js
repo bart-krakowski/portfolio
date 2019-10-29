@@ -12,7 +12,7 @@ let visibleElements = []
 
 export default function useParallax(parallaxedElements) {
 
-  const initObserver = (test) => {
+  const initObserver = (parallaxedElements) => {
     let observer = new IntersectionObserver(handleIntersect, options)
 
     function handleIntersect (entries) {
@@ -32,8 +32,8 @@ export default function useParallax(parallaxedElements) {
     }
 
     for (let i = 0; i < parallaxedElements.length; i++) {
-      if (test[i].current) {
-        observer.observe(test[i].current)
+      if (parallaxedElements[i].current) {
+        observer.observe(parallaxedElements[i].current)
       }
     }
   }

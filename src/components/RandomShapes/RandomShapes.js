@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState, createRef } from 'react'
+import React, { useRef, createRef } from 'react'
 import PropTypes from 'prop-types'
-// import { TweenMax } from 'gsap'
 import { colors as colorsPallete } from '../../settings/colors'
 import useContainerHeight from './useContainerHeight'
 import useParallax from './useParallax'
@@ -127,15 +126,7 @@ export default function RandomShapes({
     ${createShapeWrapper()}
   `
 
-  const [parallaxElements, setParallaxElements] = useState([]);
   const elementsRef = useRef(createShapes(quantity, color, WrapperRef).map(() => createRef()));
-
-  useEffect(() => {
-    const nextParallaxElements = elementsRef.current.map(
-      ref => ref.current
-    );
-    setParallaxElements(nextParallaxElements);
-  }, []);
 
   let elements = (
     <StyledShapesContainer>
@@ -150,21 +141,7 @@ export default function RandomShapes({
     </StyledShapesContainer>
   )
 
-  // elementsRef.current.forEach(el => {
-  //   console.log('test', el)
-  // })
-
-  // window.addEventListener('scroll', () => {
-  //   console.log('parallaxedElements', parallaxedElements)
-  //   parallaxedElements.forEach(parallaxedElement => {
-  //     console.log('parallaxedElement', parallaxedElement)
-  //     TweenMax.set(parallaxedElement, {y: 2 * (-window.scrollY)  })
-  //   })
-  // })
-
-
   useParallax(elementsRef.current)
-
   return elements
 }
 
