@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef, useEffect, useState, createRef } from 'react'
 import PropTypes from 'prop-types'
+// import { TweenMax } from 'gsap'
 import { colors as colorsPallete } from '../../settings/colors'
 import useContainerHeight from './useContainerHeight'
+import useParallax from './useParallax'
 import styled from 'styled-components'
 import { ShapesArray } from './Shapes'
 
@@ -9,6 +11,8 @@ const options = {
   columns: 5,
   rootMargin: 250
 }
+
+const parallaxedElements = []
 
 const createShapeWrapper = () => {
   let generatedStyles = ``
@@ -33,16 +37,10 @@ const createShapeWrapper = () => {
   return generatedStyles
 }
 
-const createShapes = (quantity, color) => {
+const createShapes = (quantity, color, WrapperRef) => {
   let shapes = []
   let prevShapeIndex = getRandomNumber(0, 2)
   let prevColorIndex = getRandomNumber(0, 7)
-
-  const Wrapper = styled.div`
-    width: 30px;
-
-    ${createShapeWrapper()}
-  `
 
   if ( color ) {
     for (let i = 0; i < quantity; i++) {
@@ -55,9 +53,12 @@ const createShapes = (quantity, color) => {
 
       const Shape = ShapesArray[generatedIndex]
       shapes.push(
-      <Wrapper key={`shape-wrapper-${i}`}>
         <Shape key={`shape-${i}`} color={color} />
-      </Wrapper>)
+      )
+
+      if (WrapperRef.current) {
+        parallaxedElements.push(WrapperRef.current)
+      }
     }
     return shapes
   } else {
@@ -80,9 +81,12 @@ const createShapes = (quantity, color) => {
       const Shape = ShapesArray[generatedShapeIndex]
 
       shapes.push(
-      <Wrapper key={`shape-wrapper-${i}`}>
         <Shape key={`shape-${i}`} color={randomColor} />
-      </Wrapper>)
+      )
+
+      if (WrapperRef.current) {
+        parallaxedElements.push(WrapperRef.current)
+      }
     }
 
     return shapes
@@ -98,9 +102,10 @@ const ShapesContainer = styled.div`
   top: calc(100vh + ${options.rootMargin}px);
   width: 100%;
   position: absolute;
-  z-index: -1;
   display: grid;
   grid-template-columns: repeat(${options.columns}, auto);
+  z-index: -1;
+  justify-items: center;
 `
 
 export default function RandomShapes({
@@ -109,17 +114,56 @@ export default function RandomShapes({
 }) {
   const shapesPerColumn = quantity / options.columns
   const floorShapedPerColumn = Math.floor(shapesPerColumn)
+  const WrapperRef = useRef(null)
 
   const StyledShapesContainer= styled(ShapesContainer)`
     height: ${useContainerHeight() - options.rootMargin}px;
     grid-template-rows: repeat(${floorShapedPerColumn}, auto);
   `
 
+  const Wrapper = styled.div`
+    width: 30px;
+    height: 35px;
+    ${createShapeWrapper()}
+  `
+
+  const [parallaxElements, setParallaxElements] = useState([]);
+  const elementsRef = useRef(createShapes(quantity, color, WrapperRef).map(() => createRef()));
+
+  useEffect(() => {
+    const nextParallaxElements = elementsRef.current.map(
+      ref => ref.current
+    );
+    setParallaxElements(nextParallaxElements);
+  }, []);
+
   let elements = (
     <StyledShapesContainer>
-      {createShapes(quantity, color)}
+      {
+        createShapes(quantity, color, WrapperRef).map((item, index) =>
+          <Wrapper ref={elementsRef.current[index]} data-test={index} key={`shape-wrapper-${index}`}>
+            {item}
+          </Wrapper>
+        )
+      }
+    }
     </StyledShapesContainer>
   )
+
+  // elementsRef.current.forEach(el => {
+  //   console.log('test', el)
+  // })
+
+  // window.addEventListener('scroll', () => {
+  //   console.log('parallaxedElements', parallaxedElements)
+  //   parallaxedElements.forEach(parallaxedElement => {
+  //     console.log('parallaxedElement', parallaxedElement)
+  //     TweenMax.set(parallaxedElement, {y: 2 * (-window.scrollY)  })
+  //   })
+  // })
+
+
+  useParallax(elementsRef.current)
 
   return elements
 }
