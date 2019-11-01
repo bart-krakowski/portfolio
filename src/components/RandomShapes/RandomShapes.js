@@ -38,15 +38,15 @@ const createShapeWrapper = () => {
 
 const createShapes = (quantity, color, WrapperRef) => {
   let shapes = []
-  let prevShapeIndex = getRandomNumber(0, 2)
-  let prevColorIndex = getRandomNumber(0, 7)
+  let prevShapeIndex = getRandomNumber(0, 2, true)
+  let prevColorIndex = getRandomNumber(0, 7, true)
 
   if ( color ) {
     for (let i = 0; i < quantity; i++) {
-      let generatedIndex = getRandomNumber(0, 2)
+      let generatedIndex = getRandomNumber(0, 2, true)
 
       while (generatedIndex === prevShapeIndex) {
-        generatedIndex = getRandomNumber(0, 2)
+        generatedIndex = getRandomNumber(0, 2, true)
       }
       prevShapeIndex = generatedIndex
 
@@ -62,17 +62,17 @@ const createShapes = (quantity, color, WrapperRef) => {
     return shapes
   } else {
     for (let i = 0; i < quantity; i++) {
-      let generatedShapeIndex = getRandomNumber(0, 2)
-      let generatedColorIndex = getRandomNumber(0, 7)
+      let generatedShapeIndex = getRandomNumber(0, 2, true)
+      let generatedColorIndex = getRandomNumber(0, 7, true)
 
       while (generatedShapeIndex === prevShapeIndex) {
-        generatedShapeIndex = getRandomNumber(0, 2)
+        generatedShapeIndex = getRandomNumber(0, 2, true)
       }
 
       prevShapeIndex = generatedShapeIndex
 
       while (generatedColorIndex === prevColorIndex) {
-        generatedColorIndex = getRandomNumber(0, 2)
+        generatedColorIndex = getRandomNumber(0, 2, true)
       }
 
       prevColorIndex = generatedColorIndex
@@ -92,8 +92,10 @@ const createShapes = (quantity, color, WrapperRef) => {
   }
 }
 
-const getRandomNumber = (min, max) => {
-  return (Math.random() * (max - min) + min).toFixed()
+const getRandomNumber = (min, max, fixed) => {
+  const result = fixed ? (Math.random() * (max - min) + min).toFixed() : (Math.random() * (max - min) + min)
+
+  return result
 }
 
 
@@ -123,25 +125,30 @@ export default function RandomShapes({
   const Wrapper = styled.div`
     width: 30px;
     height: 35px;
+    transform: matrix(1, 0, 0, 1, 0, 0);
     ${createShapeWrapper()}
   `
 
   const elementsRef = useRef(createShapes(quantity, color, WrapperRef).map(() => createRef()));
 
+  let dynamicElements = (
+    createShapes(quantity, color, WrapperRef).map((item, index) =>
+      <Wrapper ref={elementsRef.current[index]} index={index} scrollSpeed={getRandomNumber(0.1, 0.3, false)} key={`shape-wrapper-${index}`}>
+        {item}
+      </Wrapper>
+    )
+  )
+
   let elements = (
     <StyledShapesContainer>
       {
-        createShapes(quantity, color, WrapperRef).map((item, index) =>
-          <Wrapper ref={elementsRef.current[index]} data-test={index} key={`shape-wrapper-${index}`}>
-            {item}
-          </Wrapper>
-        )
+        dynamicElements
       }
     }
     </StyledShapesContainer>
   )
 
-  useParallax(elementsRef.current)
+  useParallax(elementsRef.current, dynamicElements)
   return elements
 }
 

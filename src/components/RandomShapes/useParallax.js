@@ -1,35 +1,37 @@
 import { useEffect } from 'react'
-import { TweenMax } from 'gsap'
+import { TweenLite } from 'gsap'
 
 
-const options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0
-}
+// let options = {
+//   root: null,
+//   rootMargin: '0px',
+//   threshold: []
+// }
+
+const scrollOptions = { capture: false, passive: true }
 
 let visibleElements = []
 
-export default function useParallax(parallaxedElements) {
+export default function useParallax(parallaxedElements, dynamicElements) {
+
+  console.log('dynamicElements', dynamicElements)
 
   const initObserver = (parallaxedElements) => {
-    let observer = new IntersectionObserver(handleIntersect, options)
+    const observer = new IntersectionObserver(entries => {
 
-    function handleIntersect (entries) {
       entries.forEach(entry => {
-        console.log('entry.intersectionRatio', entry.intersectionRatio)
         if (entry.intersectionRatio > 0) {
           visibleElements.push(entry.target)
-          // TweenMax.set(entry.target, { y: 2 * (-window.scrollY) })
         } else {
-          const index = visibleElements.indexOf(entry.target)
-
+          let index = visibleElements.indexOf(entry.target)
           if (index > -1) {
             visibleElements.splice(index, 1)
           }
+
+          // window.removeEventListener('scroll', parallaxHandler, scrollOptions)
         }
       })
-    }
+    })
 
     for (let i = 0; i < parallaxedElements.length; i++) {
       if (parallaxedElements[i].current) {
@@ -41,17 +43,19 @@ export default function useParallax(parallaxedElements) {
 
 
   const parallaxHandler = () => {
-    visibleElements.forEach(visibleElement => {
-      // TweenMax.set(visibleElement, { y: 1.1 * (-window.scrollY) })
-      // console.log('visibleElement.offsetTop', visibleElement.offsetTop)
-      TweenMax.set(visibleElement, { y: 1 * (visibleElement.offsetTop - window.scrollY) })
+    // console.log('test')
+
+    visibleElements.forEach((visibleElement) => {
+      const currentIndex = parallaxedElements.findIndex((item) => item.current === visibleElement)
+
+      TweenLite.to(visibleElement, 0.1, {
+        yPercent: window.scrollY * -dynamicElements[currentIndex].props.scrollSpeed
+      });
     })
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      parallaxHandler()
-    })
+    window.addEventListener('scroll', parallaxHandler)
 
     initObserver(parallaxedElements)
   })
