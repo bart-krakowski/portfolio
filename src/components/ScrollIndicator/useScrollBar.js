@@ -5,7 +5,7 @@ export default function useScrollBar() {
   const windowHeight = window.innerHeight
   const documentHeight = document.documentElement.scrollHeight
 
-  const  scrollbarHeightHandler = () => {
+  const scrollbarHeightHandler = () => {
     setScrollbarHeight(`${(windowHeight / documentHeight * 100)}%`)
   }
 

@@ -1,5 +1,5 @@
-import React, { useRef } from "react"
-import useScrollingHandler from './scrollingHandler'
+import React, { useRef } from 'react'
+import useScrollingHandler from './useScrollingHandler'
 import useScrollBar from "./useScrollBar"
 import styled from 'styled-components'
 import { Wrapper, ScrollBar } from './ScrollIndicator.styled'
