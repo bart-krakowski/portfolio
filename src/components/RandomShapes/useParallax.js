@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { TweenLite } from 'gsap'
+import throttle from '../../helpers/throttle'
 
 export default (parallaxedElements, dynamicElements) => {
   const parallaxHandler = () => {
@@ -15,6 +16,6 @@ export default (parallaxedElements, dynamicElements) => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', parallaxHandler)
+    window.addEventListener('scroll', throttle(parallaxHandler), 200)
   })
 }
