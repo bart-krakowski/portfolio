@@ -133,7 +133,7 @@ export default function RandomShapes({
 
   let dynamicElements = (
     createShapes(quantity, color, WrapperRef).map((item, index) =>
-      <Wrapper ref={elementsRef.current[index]} index={index} scrollSpeed={getRandomNumber(0.1, 1, false)} key={`shape-wrapper-${index}`}>
+      <Wrapper ref={elementsRef.current[index]} index={index} scrollSpeed={getRandomNumber(0.3, 1, false)} key={`shape-wrapper-${index}`}>
         {item}
       </Wrapper>
     )
