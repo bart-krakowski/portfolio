@@ -7,7 +7,6 @@ import { Wrapper, ScrollBar } from './ScrollIndicator.styled'
 export default function ScrollIndicator() {
   const scrollBar = useRef(null)
   const scrollBarWrapper = useRef(null)
-  useScrollingHandler(scrollBar, scrollBarWrapper)
 
   const StyledScrollBar = styled(ScrollBar)`
     height: ${useScrollBar()}
