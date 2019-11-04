@@ -11,6 +11,7 @@ import Logo from '../components/Logo/Logo'
 import ScrollIndicator from '../components/ScrollIndicator/ScrollIndicator'
 import SeeMore from '../components/SeeMore/SeeMore'
 import RandomShapes from '../components/RandomShapes/RandomShapes'
+import Footer from '../partials/Footer'
 
 const Components = () => (
   <Layout>
@@ -119,6 +120,7 @@ const Components = () => (
   Atque totam unde ipsa minus consequuntur impedit expedita modi perspiciatis voluptatibus quod commodi qui, pariatur consectetur! Eveniet odio, dolorum quaerat culpa minus consectetur dignissimos. Nisi error culpa in voluptates fuga.
   Unde reiciendis repellendus officiis temporibus doloremque velit quis, expedita hic ullam. Id sequi, qui, ipsa non fuga ex natus quaerat, veritatis esse alias accusantium doloribus? Qui, sunt? Temporibus, odit sunt.
   Aut excepturi consequuntur vel atque. Repellendus quod quis tempora illo optio fugiat numquam reiciendis veritatis iusto quidem aspernatur necessitatibus veniam, sit enim incidunt! Dolores, debitis veniam? Placeat, quam esse. Maiores.
+    <Footer/>
   </Layout>
 )
 

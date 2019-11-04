@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   bottom: 30px;
   right: 35px;
   background-color: ${({theme}) => theme.colors.white};
-  z-index: -1;
+  z-index: 1;
 `
 
 const ScrollBar = styled.div`

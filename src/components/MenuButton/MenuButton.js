@@ -45,14 +45,19 @@ const Button = styled.button`
   justify-content: center;
   padding: 0;
   border: 0;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   position: fixed;
   top: 0;
   right: 0;
   cursor: pointer;
   background-color: transparent;
   overflow: hidden;
+
+  ${({theme}) => theme.media.tablet} {
+    width: 75px;
+    height: 75px;
+  }
 
   :hover {
     ${InnerWrapper} {
@@ -82,7 +87,7 @@ const Button = styled.button`
       top: 50%;
       transform: translateY(-50%);
     }
-   
+
   }
 `
 
