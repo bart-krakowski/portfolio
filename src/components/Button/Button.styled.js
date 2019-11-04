@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.button`
-  padding: 30px 75px;
+  padding: 20px 35px;
   background-color: transparent;
   border: 2px solid ${({theme}) => theme.colors.secondary};
   font-size: 18px;
@@ -10,4 +10,11 @@ export default styled.button`
   text-transform: uppercase;
   text-align: center;
   font-family: ${({theme}) => theme.fonts.typefaces.normal};
+  margin: auto;
+  cursor: pointer;
+  outline: 0;
+
+  ${({theme}) => theme.media.tablet} {
+    padding: 30px 75px;
+  }
 `

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 
 const base = css`
@@ -30,11 +30,19 @@ const LinesWrapper = styled.div`
   }
 
   ::before {
-    left: 75px;
+    left: 60px;
+
+    ${({theme}) => theme.media.tablet} {
+      right: 75px;
+    }
   }
 
   ::after {
-    right: 75px;
+    right: 60px;
+
+    ${({theme}) => theme.media.tablet} {
+      right: 75px;
+    }
   }
 `
 const GridLine = styled.div`
