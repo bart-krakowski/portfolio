@@ -1,4 +1,4 @@
-import React, { Link } from 'react'
+import React from 'react'
 import { Footer, FooterWrapper, FooterInner, BackgroundText, FooterColumn, FooterTitle, FooterLink, FooterColumnInner } from './Footer.styled'
 import Button from '../components/Button/Button.styled';
 
@@ -21,7 +21,7 @@ export default () => {
             </FooterColumnInner>
           </FooterColumn>
         </FooterInner>
-        <Button as={Link}>Start a project</Button>
+        <Button as="a" href="mailto: bartlomiej@krakowski.website">Start a project</Button>
       </FooterWrapper>
     </Footer>
   )
