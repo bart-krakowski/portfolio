@@ -13,6 +13,7 @@ export default styled.button`
   margin: auto;
   cursor: pointer;
   outline: 0;
+  text-decoration: none;
 
   ${({theme}) => theme.media.tablet} {
     padding: 30px 75px;
