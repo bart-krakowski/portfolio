@@ -20,7 +20,7 @@ export default (watchedElement) => {
 
   useEffect(() => {
     initObserver(watchedElement.current)
-  })
+  }, [watchedElement])
 
   return isVisible
 }

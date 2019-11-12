@@ -65,12 +65,17 @@ const Button = styled.button`
       border-radius: 50%;
       width: 60px;
       height: 60px;
-      right: 8px;
-      top: 8px;
+      top: 0;
+      right: 0;
       transform: rotate(360deg);
       backdrop-filter: none;
       background-color: ${({theme}) => theme.colors.white}DD;
       transition: 0.3s width, 0.3s height, 0.3s border-radius, 0.3s top, 0.3s right, 1s transform;
+
+      ${({theme}) => theme.media.tablet} {
+        right: 8px;
+        top: 8px;
+      }
     }
 
     ${BarMiddle} {

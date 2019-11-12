@@ -9,7 +9,7 @@ export default (parallaxedElements, dynamicElements) => {
       const rect = visibleElement.current.getBoundingClientRect()
       const visibleElementY = rect.top
 
-      TweenLite.to(visibleElement.current, 0.1, {
+      TweenLite.to(visibleElement.current, 0.5, {
         yPercent: visibleElementY * dynamicElements[currentIndex].props.scrollSpeed
       });
     })
@@ -17,5 +17,5 @@ export default (parallaxedElements, dynamicElements) => {
 
   useEffect(() => {
     window.addEventListener('scroll', throttle(parallaxHandler), 200)
-  })
+  }, [parallaxedElements])
 }
