@@ -51,6 +51,7 @@ const H1Strokes = {
     opacity: 0.5;
     bottom: ${props => props.isCollapsed ? '0px' : '-20px' };
     transition: bottom 0.6s;
+    transition-delay: 0.5s;
   `,
 
   Bottom: styled.span`
@@ -65,6 +66,7 @@ const H1Strokes = {
     opacity: 0.25;
     bottom: ${props => props.isCollapsed ? '0px' : '-40px' };
     transition: bottom 0.6s;
+    transition-delay: 0.5s;
   `
 }
 
@@ -81,6 +83,7 @@ const H2Strokes = {
     opacity: 0.5;
     bottom: ${props => props.isCollapsed ? '0px' : '-20px' };
     transition: bottom 0.6s;
+    transition-delay: 0.5s;
 `,
 
 Bottom: styled.span`
@@ -95,6 +98,7 @@ Bottom: styled.span`
   opacity: 0.25;
   bottom: ${props => props.isCollapsed ? '0px' : '-40px' };
   transition: bottom 0.6s;
+  transition-delay: 0.5s;
 `
 }
 
