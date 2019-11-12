@@ -53,6 +53,7 @@ const Button = styled.button`
   cursor: pointer;
   background-color: transparent;
   overflow: hidden;
+  z-index: 1;
 
   ${({theme}) => theme.media.tablet} {
     width: 75px;

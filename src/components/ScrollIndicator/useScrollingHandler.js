@@ -1,6 +1,6 @@
 import { TweenLite, TimelineMax, Linear } from 'gsap'
 
-export default function useScrollingHandler(scrollBar, scrollBarWrapper) {
+export default (scrollBar, scrollBarWrapper) => {
   const scrollBarElement = scrollBar ? scrollBar.current : null
   const scrollBarWrapperElement = scrollBarWrapper ? scrollBarWrapper.current : null
   const windowHeight = window.innerHeight
