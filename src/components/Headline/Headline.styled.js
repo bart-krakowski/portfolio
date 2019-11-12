@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 const base = css`
   margin: 0;
   font-family: ${({theme}) => theme.fonts.typefaces.normal};
+  text-decoration: none;
 `
 
 const variants = {
@@ -48,19 +49,24 @@ const H1Strokes = {
     flex-direction: column;
     justify-content: flex-end;
     opacity: 0.5;
+    bottom: ${props => props.isCollapsed ? '0px' : '-20px' };
+    transition: bottom 0.6s;
+    transition-delay: 0.5s;
   `,
 
   Bottom: styled.span`
     -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
     color: transparent;
     position: absolute;
-    bottom: -40px;
     height: 32%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     opacity: 0.25;
+    bottom: ${props => props.isCollapsed ? '0px' : '-40px' };
+    transition: bottom 0.6s;
+    transition-delay: 0.5s;
   `
 }
 
@@ -69,26 +75,30 @@ const H2Strokes = {
     -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
     color: transparent;
     position: absolute;
-    bottom: -20px;
     height: 45%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     opacity: 0.5;
+    bottom: ${props => props.isCollapsed ? '0px' : '-20px' };
+    transition: bottom 0.6s;
+    transition-delay: 0.5s;
 `,
 
 Bottom: styled.span`
   -webkit-text-stroke: 1px ${props => props.color ? ({theme}) => theme.colors[props.color] : ({theme}) => theme.colors.white};
   color: transparent;
   position: absolute;
-  bottom: -40px;
   height: 45%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   opacity: 0.25;
+  bottom: ${props => props.isCollapsed ? '0px' : '-40px' };
+  transition: bottom 0.6s;
+  transition-delay: 0.5s;
 `
 }
 

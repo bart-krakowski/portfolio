@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import useScrollingHandler from './useScrollingHandler'
-import useScrollBar from "./useScrollBar"
+import useScrollBar from './useScrollBar'
 import styled from 'styled-components'
 import { Wrapper, ScrollBar } from './ScrollIndicator.styled'
 
-export default function ScrollIndicator() {
+export default () => {
   const scrollBar = useRef(null)
   const scrollBarWrapper = useRef(null)
   useScrollingHandler(scrollBar, scrollBarWrapper)
@@ -15,7 +15,7 @@ export default function ScrollIndicator() {
 
   let elements = (
     <Wrapper ref={scrollBarWrapper}>
-      <StyledScrollBar ref={scrollBar}/>
+      <StyledScrollBar ref={scrollBar} />
     </Wrapper>
   )
 
