@@ -6,7 +6,7 @@ export const Headline = React.forwardRef(({
   variant,
   children,
   color,
-  isCollapsed,
+  isExpanded,
   as
 }, ref) => {
   const Tag = variants[`${variant || 'StrokeH1'}`]
@@ -15,16 +15,16 @@ export const Headline = React.forwardRef(({
     return (
       <Tag as={ as } color={color} ref={ref}>
         {children}
-        <H1Strokes.Top color={color} isCollapsed={isCollapsed} aria-hidden="true">{children}</H1Strokes.Top>
-        <H1Strokes.Bottom color={color} isCollapsed={isCollapsed} aria-hidden="true">{children}</H1Strokes.Bottom>
+        <H1Strokes.Top color={color} isExpanded={isExpanded} aria-hidden="true">{children}</H1Strokes.Top>
+        <H1Strokes.Bottom color={color} isExpanded={isExpanded} aria-hidden="true">{children}</H1Strokes.Bottom>
       </Tag>
     )
   } else if (variant==='FillH2') {
     return (
       <Tag as={ as } color={color} ref={ref}>
         {children}
-        <H2Strokes.Top color={color} isCollapsed={isCollapsed} aria-hidden="true">{children}</H2Strokes.Top>
-        <H2Strokes.Bottom color={color} isCollapsed={isCollapsed} aria-hidden="true">{children}</H2Strokes.Bottom>
+        <H2Strokes.Top color={color} isExpanded={isExpanded} aria-hidden="true">{children}</H2Strokes.Top>
+        <H2Strokes.Bottom color={color} isExpanded={isExpanded} aria-hidden="true">{children}</H2Strokes.Bottom>
       </Tag>
     )
   } else {

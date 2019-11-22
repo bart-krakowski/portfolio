@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function useScrollBar() {
+export default () => {
   const [scrollbarHeight, setScrollbarHeight] = useState(0)
   const windowHeight = window.innerHeight
   const documentHeight = document.documentElement.scrollHeight

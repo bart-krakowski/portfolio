@@ -3,8 +3,9 @@ import styled, { css } from 'styled-components'
 const base = css`
   position: absolute;
   font-family: ${({theme}) => theme.fonts.typefaces.normal};
-  -webkit-text-stroke: 1px #ffffff;
-  font-size: 72px;
+  -webkit-text-stroke: 1px ${({theme}) => theme.colors.white};
+  font-size: 142px;
+  line-height: 1;
 `
 
 const NumberWrapper = styled.div`

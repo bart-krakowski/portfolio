@@ -105,7 +105,7 @@ const ShapesContainer = styled.div`
   position: absolute;
   display: grid;
   grid-template-columns: repeat(${options.columns}, auto);
-  z-index: 1;
+  z-index: -1;
   justify-items: center;
   pointer-events: none;
 `

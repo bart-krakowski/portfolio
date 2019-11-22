@@ -13,6 +13,7 @@ import SeeMore from '../components/SeeMore/SeeMore'
 import RandomShapes from '../components/RandomShapes/RandomShapes'
 import NextProject from '../components/NextProject/NextProject'
 import Footer from '../partials/Footer'
+import ProjectThumbnail from '../components/ProjectThumbnail/ProjectThumbnail'
 
 const Components = () => (
   <Layout>
@@ -31,6 +32,7 @@ const Components = () => (
     <ScrollIndicator />
     <SeeMore color="primary"/>
     <RandomShapes quantity={18} />
+    <ProjectThumbnail />
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, dignissimos repellat. Nisi deserunt in provident, omnis fugiat accusamus quaerat, autem quas illum iusto optio vel? Rem eum esse quam reiciendis.
   Sint optio iure reprehenderit libero sequi neque ad! Laudantium ullam odit aperiam ducimus! Laboriosam aliquid voluptatibus perspiciatis consequatur reprehenderit beatae. Debitis odit eveniet, in cumque unde nesciunt impedit a illum?
   Expedita adipisci mollitia nesciunt quos. Blanditiis maxime voluptatum numquam, officiis culpa eveniet architecto nostrum tenetur ut dolorem possimus, officia dolorum vero ex animi debitis, ipsam voluptatibus modi neque non! Pariatur.

@@ -13,8 +13,7 @@ export default () => {
       <Headline
         variant={'FillH1'}
         as={Link}
-        href="onet.pl"
-        isCollapsed={!isVisible}
+        isExpanded={isVisible}
         ref={headlineRef}
         >
         Next project

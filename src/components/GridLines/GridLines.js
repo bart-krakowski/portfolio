@@ -23,6 +23,7 @@ const LinesWrapper = styled.div`
   position: relative;
   top: 0;
   z-index: -1;
+  pointer-events: none;
 
   ::before, ::after {
     ${base}
@@ -54,7 +55,7 @@ const GridLine = styled.div`
 export default () => (
   <SiteBg>
     <LinesWrapper>
-      <GridLine></GridLine>
+      <GridLine />
     </LinesWrapper>
   </SiteBg>
 )
